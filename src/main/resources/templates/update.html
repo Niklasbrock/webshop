@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vareopdatering</title>
+    <link href="bootstrap.css" rel="stylesheet">
+</head>
+<body>
+    <form action="/update/" method="post">
+        <div class="form-group">
+            <h1 class="text-dark">Opdater Vare</h1>
+            <input type="hidden" name="id" th:value="${product.id}">
+        </div>
+            <div class="form-group">
+                <label for="name">Navn</label>
+                <input class="form-control" id="name" type="text" name="name" th:value="${product.name}">
+            </div>
+            <div class="form-group">
+                <label for="price">Pris</label>
+                <input class="form-control" id="price" type="number" name="price" th:value="${product.price}">
+            </div>
+        <div class="form-group">
+            <label for="description">Beskrivelse</label>
+            <input class="form-control" id="description" type="text" name="description" th:value="${product.description}">
+        </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Opdater</button>
+                <a href="/">Fortryd</a>
+            </div>
+    </form>
+</body>
+</html>

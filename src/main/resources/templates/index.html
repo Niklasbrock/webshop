@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Varekatalog</title>
+    <link href="bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="p-5">
+    <h1 class="text-dark">Varekatalog</h1>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Vare</th>
+            <th>Pris</th>
+            <th>Beskrivelse</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.description}"></td>
+            <td><a class="btn btn-primary" th:href="@{'/update/' + ${product.id}}">Opdater</a> </td>
+        </tr>
+    </table>
+    <a class="btn-primary btn" href="/create">Opret</a>
+</div>
+
+</body>
+</html>
