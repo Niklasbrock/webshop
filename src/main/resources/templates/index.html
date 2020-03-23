@@ -21,6 +21,7 @@
             <td th:text="${product.price}"></td>
             <td th:text="${product.description}"></td>
             <td><a class="btn btn-primary" th:href="@{'/update/' + ${product.id}}">Opdater</a> </td>
+            <td><a class="btn btn-primary" th:href="@{'/delete/' + ${product.id}}">Slet</a> </td>
         </tr>
     </table>
     <a class="btn-primary btn" href="/create">Opret</a>

@@ -13,7 +13,7 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public List<Product> getAll(){ return productRepository.readAll(); }
+    public List<Product> findAll(){ return productRepository.findAll(); }
 
     public void create(Product product){
         productRepository.create(product);
@@ -24,4 +24,6 @@ public class ProductService {
     public Product read(int id){
         return productRepository.read(id);
     }
+
+    public boolean delete(int id) { return productRepository.delete(id); }
 }

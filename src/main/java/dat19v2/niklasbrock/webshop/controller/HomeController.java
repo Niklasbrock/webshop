@@ -21,7 +21,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String index (Model model, HttpSession httpSession){
-        model.addAttribute("products", productService.getAll());
+        model.addAttribute("products", productService.findAll());
         return "index";
     }
 
@@ -49,8 +49,11 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @GetMapping("/delete")
-    public String delete() { return "delete"; }
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") int id, Model model) {
+        productService.delete(id);
+        return "redirect:/";
+    }
 
 
 }
