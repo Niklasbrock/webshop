@@ -1,11 +1,30 @@
 package dat19v2.niklasbrock.webshop.model;
 
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
 public class Product {
 
+//    Primary Key
+    @Id
+//    Automatically increment id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String name;
     private double price;
     private String description;
+
+//    one to one relationship with cascade all, so that description is deleted if product is deleted.
+    @OneToOne(cascade = CascadeType.ALL)
+    private CompanyDescription companyDescription;
+
+    @OneToOne
+    private Company company;
+
+    @OneToMany
+    private Set<Category> categories;
 
     public Product() {
     }
@@ -53,5 +72,29 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public CompanyDescription getCompanyDescription() {
+        return companyDescription;
+    }
+
+    public void setCompanyDescription(CompanyDescription companyDescription) {
+        this.companyDescription = companyDescription;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }

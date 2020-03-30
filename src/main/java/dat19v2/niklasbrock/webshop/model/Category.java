@@ -1,23 +1,32 @@
 package dat19v2.niklasbrock.webshop.model;
 
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
 public class Category {
 
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String name;
+
+    @OneToMany(mappedBy = "categories")
+    private Set<Product> products;
 
     public Category() {
     }
 
-    public Category(long id, String name) {
+    public Category(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -27,5 +36,13 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 }
