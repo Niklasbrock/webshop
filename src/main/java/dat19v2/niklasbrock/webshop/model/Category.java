@@ -11,7 +11,8 @@ public class Category {
     private int id;
     private String name;
 
-    @OneToMany(mappedBy = "categories")
+    @OneToMany
+    @JoinColumn(name = "category_id")
     private Set<Product> products;
 
     public Category() {

@@ -51,7 +51,8 @@ public class HomeController {
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id, Model model) {
-        productService.delete(id);
+
+        productService.delete(productService.read(id));
         return "redirect:/";
     }
 

@@ -16,15 +16,14 @@ public class Product {
     private double price;
     private String description;
 
-//    one to one relationship with cascade all, so that description is deleted if product is deleted.
-    @OneToOne(cascade = CascadeType.ALL)
-    private CompanyDescription companyDescription;
-
     @OneToOne
     private Company company;
 
-    @OneToMany
-    private Set<Category> categories;
+    @ManyToOne
+    private Category category;
+
+    @ManyToMany
+    private Set<Tag> tags;
 
     public Product() {
     }
@@ -74,14 +73,6 @@ public class Product {
         this.description = description;
     }
 
-    public CompanyDescription getCompanyDescription() {
-        return companyDescription;
-    }
-
-    public void setCompanyDescription(CompanyDescription companyDescription) {
-        this.companyDescription = companyDescription;
-    }
-
     public Company getCompany() {
         return company;
     }
@@ -90,11 +81,19 @@ public class Product {
         this.company = company;
     }
 
-    public Set<Category> getCategories() {
-        return categories;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
     }
 }

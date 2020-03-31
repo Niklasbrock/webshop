@@ -3,29 +3,17 @@ package dat19v2.niklasbrock.webshop.model;
 import javax.persistence.*;
 import java.util.Set;
 
+//A Tag is a searchable word to find the product you are looking for.
 @Entity
-public class Company {
-
+public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    int id;
+
     private String name;
 
-    //    one to one relationship with cascade all, so that description is deleted if company is deleted.
-    @OneToOne(cascade = CascadeType.ALL)
-    private CompanyDescription companyDescription;
-
-    @OneToMany
-    @JoinColumn(name = "company_id")
+    @ManyToMany(mappedBy = "tags")
     private Set<Product> products;
-
-    public Company() {
-    }
-
-    public Company(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 
     public int getId() {
         return id;
